@@ -1,0 +1,24 @@
+<%- include("partials/header.ejs") %>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit your note</title>
+</head>
+<body>
+    <section class="gradient-background">
+        <div class="card">
+            <form action="/update/<%= textIndex %>" method="POST">
+                <div class="mb-3">
+                    <label for="updatedText" class="form-label">Edit your note: </label>
+                    <input type="text" class="form-control" id="updatedText" name="updatedText" value="<%= textToEdit %>">
+                    <br>
+                    <button type="submit" class="btn btn-success">Update</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

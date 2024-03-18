@@ -1,0 +1,58 @@
+<%- include("partials/header.ejs") %>
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note it!</title>
+
+</head>
+<body>
+    <section class="gradient-background">
+        <div class="card">
+    
+  
+            <form action="/submit" method="POST" >
+                <div class="mb-3">
+                <label for="notes" class="form-label">Please write your note here: </label>
+                <input type="text" class="form-control" id="thetext" name="texts">      
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+        
+        
+            
+            </form>
+        </div>
+        <div class="card">
+
+        
+            <% if (locals.titletext) { %>
+                <h2>Your notes:</h2>
+                <ul>
+                    <% for (i = 0; i < titletext.length; i++) { %>
+                        
+                        <li style="list-style-type: none;">
+                            <p><%= titletext[i] %></p>
+                            <div class="buttons">
+                                <form action="/edit/<%= i %>" method="GET">
+                                <button type="submit" class="btn btn-warning">Edit</button>
+                                </form>
+                                <form action="/delete/<%= i %>" method="POST">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </li>
+                            
+                    <% } %>
+                </ul> 
+            <% } else {%>
+                <p>You haven't written any notes yet. Please write your notes and submit! </p>
+            <% } %>
+        </div>
+            
+    </section>
+</body>
+</html>
